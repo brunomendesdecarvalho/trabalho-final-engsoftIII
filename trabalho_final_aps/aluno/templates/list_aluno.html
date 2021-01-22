@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alunos</title>
+    </head>
+
+    <body>
+        <h1>Aluno</h1>
+        {% for aluno in alunos %}
+            <h2>{{aluno.nome}}</h2>
+            <h4>{{aluno.matricula}}</h4> <!-- Artur, adiciona um for para listar as turmas nas quais o aluno está matriculado, pode ser? -->
+        {% endfor %}
+
+        <a href="{% url 'add_aluno' %}">Adicionar Aluno</a>
+    </form>
+    </body>
+</html>

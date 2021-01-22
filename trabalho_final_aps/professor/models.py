@@ -1,3 +1,7 @@
 from django.db import models
+from aluno.models import *
 
-# Create your models here.
+
+class Professor(models.Model):
+    nome = models.CharField(max_length=50)
+    matricula = models.CharField(max_length=10)

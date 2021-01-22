@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from aluno import views as av
+from professor import views as pv
+from turma import views as tv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('add_aluno/', av.add_aluno, name='add_aluno'),
+    path('list_alunos/', av.list_alunos, name='list_alunos'),
+    path('add_professor/', pv.add_professor, name='add_professor'),
+    path('list_professores/', pv.list_professores, name='list_professores'),
+    path('add_turma/', tv.add_turma, name='add_turma'),
+    path('list_turmas/', tv.list_turmas, name='list_turmas'),
 ]
