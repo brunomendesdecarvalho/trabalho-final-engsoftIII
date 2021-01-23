@@ -1,0 +1,81 @@
+{% extends 'dashboard/navbar.html' %}
+
+{% block estudante %}
+    {% if user.estudante %}
+        <div class="bg-light p-2 rounded">
+            <div class="text-center">
+                <div class="mb-3">
+                    <h2>Realize Matrícula</h2>
+                </div>
+
+                {% if error %}
+                    <div class="col-md-8 offset-md-2">
+                        <hr class="mt-5">
+                        <div class="alert alert-danger">
+                            {{ error }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if success %}
+                    <div class="col-md-8 offset-md-2">
+                        <hr class="mt-5">
+                        <div class="alert alert-success">
+                            {{ success }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if warning %}
+                    <div class="col-md-8 offset-md-2">
+                        <hr class="mt-5">
+                        <div class="alert alert-warning">
+                            {{ warning }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if not error %}
+                    <form class="form-group" method="POST" action="{% url 'realizar-matricula' %}">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <label for="turma" class="form-label">Disciplina</label>
+                                <select class="form-control" id="turma" name="turma">
+                                    {% for turma in turmas %}
+                                        <option value="{{ turma.id }}">{{ turma.nome }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary align-content-center mt-5 no-gutters" type="submit">Realizar Matrícula</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block professor %}
+    {% if not user.estudante %}
+        <div class="bg-light p-2 rounded">
+            <hr class="mt-5">
+            <div class="alert alert-danger">
+                Não autorizado
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block invalido %}
+    {% if not user.estudante %}
+        <div class="bg-light p-5 rounded">
+            <hr class="mt-5">
+            <div class="alert alert-danger">
+                Não autorizado
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

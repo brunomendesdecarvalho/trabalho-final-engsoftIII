@@ -1,0 +1,96 @@
+{% extends 'dashboard/navbar.html' %}
+
+{% block estudante %}
+    {% if user.estudante %}
+        <div class="bg-light p-5 rounded">
+            {% if error %}
+                <div class="col-md-8 offset-md-2">
+                    <hr class="mt-5">
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if success %}
+                <div class="col-md-8 offset-md-2">
+                    <hr class="mt-5">
+                    <div class="alert alert-success">
+                        {{ success }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if warning %}
+                <div class="col-md-8 offset-md-2">
+                    <hr class="mt-5">
+                    <div class="alert alert-warning">
+                        {{ warning }}
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-sm-12 text-center flex-row">
+                    <h2>Funcionalidades</h2>
+                    <hr>
+                    <a class="btn btn-lg btn-outline-success mt-2 " href="{% url 'realizar-matricula' %}" role="button">Realizar Matrícula
+                        &raquo;</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block professor %}
+    {% if user.professor %}
+        <div class="bg-light p-5 rounded">
+            {% if error %}
+                <div class="col-md-8 offset-md-2">
+                    <hr class="mt-5">
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if success %}
+                <div class="col-md-8 offset-md-2">
+                    <hr class="mt-5">
+                    <div class="alert alert-success">
+                        {{ success }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if warning %}
+                <div class="col-md-8 offset-md-2">
+                    <hr class="mt-5">
+                    <div class="alert alert-warning">
+                        {{ warning }}
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-sm-12 text-center flex-row">
+                    <h2>Funcionalidades</h2>
+                    <hr>
+                    <a class="btn btn-lg btn-outline-success mt-2 " href="{% url 'criar-turma' %}" role="button">Criar Turmas
+                            &raquo;</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block invalido %}
+    {% if not user.professor and not user.estudante %}
+        <div class="bg-light p-5 rounded">
+            <hr class="mt-5">
+            <div class="alert alert-danger">
+                Não autorizado
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'dashboard/navbar.html' %}
+
+{% block estudante %}
+    {% if not user.professor %}
+        <div class="bg-light p-2 rounded">
+            <hr class="mt-5">
+            <div class="alert alert-danger">
+                Não autorizado
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block professor %}
+    {% if user.professor %}
+        <div class="bg-light p-2 rounded">
+            <div class="text-center">
+                <div class="mb-3">
+                    <h2>Crie uma turma</h2>
+                </div>
+
+                {% if error %}
+                    <div class="col-md-8 offset-md-2">
+                        <hr class="mt-5">
+                        <div class="alert alert-danger">
+                            {{ error }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if success %}
+                    <div class="col-md-8 offset-md-2">
+                        <hr class="mt-5">
+                        <div class="alert alert-success">
+                            {{ success }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if warning %}
+                    <div class="col-md-8 offset-md-2">
+                        <hr class="mt-5">
+                        <div class="alert alert-warning">
+                            {{ warning }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if not error %}
+                    <form class="form-group" method="POST" action="{% url 'criar-turma' %}">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-3">
+                                <label for="nome" class="form-label">Nome da turma</label>
+                                <input type="text" class="form-control" id="nome" value="{% if nome %}{{ nome }}{% else %}{% endif %}" name="nome" required>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="max_alunos" class="form-label">Quantidade de alunos</label>
+                                <input type="number" min="1" max="60" class="form-control" id="max_alunos" value="{% if max_alunos %}{{ max_alunos }}{% else %}{% endif %}" name="max_alunos" required>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="disciplina" class="form-label">Disciplina</label>
+                                <select class="form-control" id="disciplina" name="disciplina">
+                                    {% for disciplina in disciplinas %}
+                                        <option value="{{ disciplina.id }}">{{ disciplina.nome }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary align-content-center mt-5 no-gutters" type="submit">Criar</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block invalido %}
+    {% if not user.professor %}
+        <div class="bg-light p-5 rounded">
+            <hr class="mt-5">
+            <div class="alert alert-danger">
+                Não autorizado
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
