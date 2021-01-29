@@ -33,5 +33,5 @@ E fornecer os dados requeridos.
 
 Por fim, para iniciar o servidor:
 ```
-python manage.py runserver 8000
+python manage.py runserver <numero_da_porta>
 ```
