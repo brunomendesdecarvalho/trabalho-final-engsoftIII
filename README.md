@@ -1,4 +1,4 @@
-# Trabalho Final de Análise e Projeto de Sistemas
+# Trabalho Final de Engenharia de Software III
 
 ### Descrição
   O sistema foi feito em Django, framework de desenvolvimento web baseado em Python, juntamente com o Django Rest Framework. O padrão de projeto adotado na tecnologia utilizada é o Model-View-Template. O Model, tal como no MVC, é onde ficam as regras de negócio do projeto. Na View é onde são realizadas funções similares às de um Controller no MVC, mediando a entrada e saída de dados do Banco. Já no Template é onde ocorre a interação direta do usuário com o sistema, tal como nas Views do MVC.
