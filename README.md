@@ -14,7 +14,7 @@
 - djangorestframework==3.12.2
 
 #### Passo-a-passo no Shell:
-Para rodar o projeto, é importante que sejam feitas as migrações primeiro. Logo, abra o shell de sua preferência dentro da pasta principal do projeto (onde está o arquivo "manage.py"), e digite:
+Para rodar o projeto, é necessário que sejam feitas as migrações primeiro. Logo, abra o shell de sua preferência dentro da pasta principal do projeto (onde está o arquivo "manage.py"), e digite:
 ```
 python manage.py makemigrations
 ```
